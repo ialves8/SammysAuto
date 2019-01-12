@@ -1,0 +1,146 @@
+﻿@model RegisterViewModel
+@using SammysAuto.Utility
+@{
+    ViewData["Title"] = "Registro";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="Nome" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="Nome" class="form-control" />
+                </div>
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="Sobrenome" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="Sobrenome" class="form-control" />
+                </div>
+                <span asp-validation-for="Sobrenome" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="Email" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="Email" class="form-control" />
+                </div>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="NumeroTelefone" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="NumeroTelefone" class="form-control" />
+                </div>
+                <span asp-validation-for="NumeroTelefone" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="Endereco" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="Endereco" class="form-control" />
+                </div>
+                <span asp-validation-for="Endereco" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="Cidade" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="Cidade" class="form-control" />
+                </div>
+                <span asp-validation-for="Cidade" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="CodigoPostal" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="CodigoPostal" class="form-control" />
+                </div>
+                <span asp-validation-for="CodigoPostal" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="Password" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="Password" class="form-control" />
+                </div>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="ConfirmPassword" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="ConfirmPassword" class="form-control" />
+                </div>
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+        </div>
+        @if (User.IsInRole(SD.AdminEndUser))
+        {
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="isAdmin" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="isAdmin" type="checkbox" />
+                </div>
+            </div>
+        </div>
+        }
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                </div>
+                <div class="col-sm-4">
+                    @if (User.IsInRole(SD.AdminEndUser))
+                    {
+                        <button type="submit" class="btn btn-sm btn-primary form-control">Adicionar cliente</button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-sm btn-primary form-control">Registrar</button>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

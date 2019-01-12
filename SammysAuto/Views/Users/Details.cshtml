@@ -1,0 +1,89 @@
+﻿@model ApplicationUser
+@{
+    ViewData["Title"] = "Details";
+}
+
+<br />
+<h2>Detalhes do usuário</h2>
+<hr />
+
+<div class="form-border">
+    <fieldset disabled>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="Nome" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="Nome" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="Sobrenome" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="Sobrenome" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="Email" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="Email" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="NumeroTelefone" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="NumeroTelefone" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="Endereco" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="Endereco" disabled class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="Cidade" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="Cidade" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="CodigoPostal" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="CodigoPostal" class="form-control" />
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <br />
+    <div class="form-group">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-primary">Editar</a>
+        <a asp-action="Index" asp-controller="Users" class="btn btn-sm btn-success">De volta à lista</a>
+    </div>
+</div>
+

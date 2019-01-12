@@ -1,0 +1,124 @@
+﻿@model SammysAuto.ViewModel.CarAndCustomerViewModel
+@using SammysAuto.Utility
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<h2>Registro de carro para o cliente</h2>
+<hr />
+
+<div class="row" style="padding-bottom:80px;">
+    <div class="col-sm-6" style="padding-bottom:80px;">
+        @* Add Create New Car Button *@
+        <a asp-action="Create" asp-route-userId="@Model.UserObj.Id" class="btn btn-sm btn-primary" style="width:150px;">Adicionar carro novo</a>
+    </div>
+    <div class="col-sm-6">
+        @* Display User Details *@
+        <div class="row">
+            <div class="col-sm-4">
+                <label asp-for="UserObj.Nome" class="control-label"></label>
+            </div>
+            <div class="col-sm-8" style="padding-bottom:5px;">
+                <input asp-for="UserObj.Nome" disabled class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <label asp-for="UserObj.Sobrenome" class="control-label"></label>
+            </div>
+            <div class="col-sm-8" style="padding-bottom:5px;">
+                <input asp-for="UserObj.Sobrenome" disabled class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <label asp-for="UserObj.NumeroTelefone" class="control-label"></label>
+            </div>
+            <div class="col-sm-8" style="padding-bottom:5px;">
+                <input asp-for="UserObj.NumeroTelefone" disabled class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <label asp-for="UserObj.Email" class="control-label"></label>
+            </div>
+            <div class="col-sm-8" style="padding-bottom:5px;">
+                <input asp-for="UserObj.Email" disabled class="form-control" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (Model.Cars.Count()== 0)
+{
+    <div class="text-primary form-border">Nenhum carro encontrado! Por favor, adicione carro...</div>
+}
+else
+{
+    <div class="form-border">
+        <table class="table table-condensed table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(m => m.Cars.FirstOrDefault().NIV)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.Cars.FirstOrDefault().Fabricacao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.Cars.FirstOrDefault().Modelo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.Cars.FirstOrDefault().Estilo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.Cars.FirstOrDefault().Cor)
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Cars)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => item.NIV)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Fabricacao)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Modelo)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Estilo)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Cor)
+                </td>
+                @if (User.IsInRole(SD.CustomerEndUser))
+                {
+                    <td style="width:100px">
+                        <a class="btn btn-primary btn-sm" asp-controller="Services" asp-action="Index" asp-route-carId="@item.Id">
+                            <span class="glyphicon glyphicon-wrench"></span>&nbsp; História de Serviço
+                        </a>
+                    </td>
+                }
+                else
+                {
+                    <td style="width:100px">
+                        <a class="btn btn-success btn-sm" asp-controller="Services" asp-action="Create" asp-route-carId="@item.Id">
+                            <span class="glyphicon glyphicon-plus-sign"></span>&nbsp; Novo serviço
+                        </a>
+                    </td>
+                }
+                <td>
+                    @Html.Partial("_TableButtonPartial", new IndividualButtonPartial { CarId = item.Id })
+                </td>
+            </tr>
+            }
+        </table>
+    </div>
+}
+
