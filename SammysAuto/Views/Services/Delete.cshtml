@@ -1,0 +1,56 @@
+﻿@model SammysAuto.Models.Service
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<br />
+<h2>Excluir tipo de serviço</h2>
+<hr />
+
+<form asp-action="Delete">
+    <div class="form-border">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="CarId" />
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="Quilometragem" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="Quilometragem" disabled class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="ServiceType.Nome" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="ServiceType.Nome" disabled class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="Detalhes" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="Detalhes" disabled class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="Preco" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="Preco" disabled class="form-control" />
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <input type="submit" value="Excluir" class="btn btn-sm btn-danger" />
+            <a asp-action="Create" asp-route-carId="@Model.CarId" class="btn btn-sm btn-success">De volta à lista</a>
+        </div>
+    </div>
+</form>
+

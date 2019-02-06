@@ -283,7 +283,7 @@ namespace SammysAuto.Controllers
 
                     if (User.IsInRole(SD.AdminEndUser))
                     {
-                        return RedirectToAction("Index", "User");
+                        return RedirectToAction("Index", "Users");
                     }
                     else
                     {

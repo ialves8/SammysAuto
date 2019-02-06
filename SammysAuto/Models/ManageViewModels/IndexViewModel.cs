@@ -21,5 +21,20 @@ namespace SammysAuto.Models.ManageViewModels
         public string PhoneNumber { get; set; }
 
         public string StatusMessage { get; set; }
+
+        [Required]
+        public string Nome { get; set; }
+
+        [Required]
+        public string Sobrenome { get; set; }
+
+        [Required]
+        public string Endereco { get; set; }
+
+        [Required]
+        public string Cidade { get; set; }
+
+        [Required]
+        public string CodigoPostal { get; set; }
     }
 }

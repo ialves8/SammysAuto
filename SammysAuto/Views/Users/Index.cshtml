@@ -11,8 +11,8 @@
 
     <div style="height:60px;">
         <div class="col-sm-3" style="padding-top:20px;">
-            <a asp-controller="Account" asp-action="Register" class="btn btn-sm btn-primary" style="width:200px;">
-                <span class="glyphicon glyphicon-plus"></span>&nbsp; Crie novos clientes
+            <a asp-controller="Account" asp-action="Register" class="btn btn-primary" style="width:200px;">
+                <span class="glyphicon glyphicon-plus"></span> &nbsp; Crie novos clientes
             </a>
         </div>
         <div class="col-sm-9">
@@ -61,28 +61,28 @@
             </tr>
             @foreach (var item in Model)
             {
-            <tr>
-                <td>
-                    @Html.DisplayFor(m => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(m => item.Sobrenome)
-                </td>
-                <td>
-                    @Html.DisplayFor(m => item.NumeroTelefone)
-                </td>
-                <td>
-                    @Html.DisplayFor(m => item.Email)
-                </td>
-                <td>
-                    <a asp-controller="Cars" asp-action="Index" asp-route-userid="@item.Id">
-                        <img src="~/images/car.png" width="40" />&nbsp; Visualizar carros
-                    </a>
-                </td>
-                <td>
-                    @Html.Partial("_TableButtonPartial", new IndividualButtonPartial { CustomerId=item.Id})
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Sobrenome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.NumeroTelefone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Email)
+                    </td>
+                    <td>
+                        <a asp-controller="Cars" asp-action="Index" asp-route-userid="@item.Id">
+                            <img src="~/images/car.png" width="40" />&nbsp; Visualizar carros
+                        </a>
+                    </td>
+                    <td>
+                        @Html.Partial("_TableButtonPartial", new IndividualButtonPartial { CustomerId = item.Id })
+                    </td>
+                </tr>
             }
         </table>
     </div>

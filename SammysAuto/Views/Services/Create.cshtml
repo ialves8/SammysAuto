@@ -1,0 +1,88 @@
+﻿@model SammysAuto.ViewModel.CarAndServicesViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<br />
+@Html.Partial("_CarDetailsInService")
+<hr />
+
+<h4>Serviço</h4>
+
+<div class="row form-border">
+    <form asp-action="Create">
+        <input asp-for="carId" hidden />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-sm-5">
+            @* Miles and Price, with Submit Button *@
+            <div class="row">
+                <div class="col-sm-3">
+                    <label asp-for="NewServiceObj.Quilometragem" class="control-label"></label>
+                </div>
+                <div class="col-sm-9" style="padding-bottom:5px;">
+                    <input asp-for="NewServiceObj.Quilometragem" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <label asp-for="NewServiceObj.Preco" class="control-label"></label>
+                </div>
+                <div class="col-sm-9" style="padding-bottom:5px;">
+                    <input asp-for="NewServiceObj.Preco" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                </div>
+                <div class="col-sm-9" style="padding-bottom:5px;">
+                    <input type="submit" value="Adicionar serviço" class="btn btn-sm btn-primary form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5 col-sm-offset-2">
+            @* Details and ServiceType *@
+            <div class="row">
+                <div class="col-sm-3">
+                    <label asp-for="NewServiceObj.Detalhes" class="control-label"></label>
+                </div>
+                <div class="col-sm-9" style="padding-bottom:5px;">
+                    <input asp-for="NewServiceObj.Detalhes" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <label asp-for="NewServiceObj.ServiceTypeId" class="control-label"></label>
+                </div>
+                <div class="col-sm-9" style="padding-bottom:5px;">
+                    <select asp-for="NewServiceObj.ServiceTypeId" asp-items="@(new SelectList(Model.ServiceTypesObj,"Id","Nome"))" class="form-control"></select>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<br />
+<hr />
+<h4>Registros de serviço prestados</h4>
+
+<div class="row form-border">
+    @Html.Partial("_DisplayPastServices", Model)
+    <div class="row">
+        @if (Model.PastServicesObj.Count() == 0)
+        {
+            <div class="col-sm-12 text-primary" style="padding-bottom:20px;">Nenhum registro de serviço prestado encontrado.</div>
+        }
+
+        <div class="col-sm-3">
+            <a asp-controller="Cars" asp-action="Index" asp-route-userId="@Model.UserId" class="btn btn-sm btn-success">De volta à lista</a>
+        </div>
+
+        @if (Model.PastServicesObj.Count() > 4)
+        {
+            <div class="pull-right" style="padding-right:20px;">
+                <a asp-action="Index" asp-route-carId="@Model.carId" class="text-primary">Carregar tudo...</a>
+            </div>
+        }
+    </div>
+</div>

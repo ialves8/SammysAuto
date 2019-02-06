@@ -1,0 +1,44 @@
+﻿@model SammysAuto.ViewModel.CarAndServicesViewModel
+
+<h4>Registro do carro para o cliente</h4>
+
+<div class="row form-border">
+    <div class="col-sm-5">
+        @* Make And Model *@
+        <div class="row">
+            <div class="col-sm-3">
+                <label asp-for="Fabricacao" class="control-label"></label>
+            </div>
+            <div class="col-sm-9" style="padding-bottom:5px;">
+                <input asp-for="Fabricacao" disabled class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <label asp-for="Modelo" class="control-label"></label>
+            </div>
+            <div class="col-sm-9" style="padding-bottom:5px;">
+                <input asp-for="Modelo" disabled class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-5 col-sm-offset-2">
+        @* Style And Year *@
+        <div class="row">
+            <div class="col-sm-3">
+                <label asp-for="Estilo" class="control-label"></label>
+            </div>
+            <div class="col-sm-9" style="padding-bottom:5px;">
+                <input asp-for="Estilo" disabled class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <label asp-for="Ano" class="control-label"></label>
+            </div>
+            <div class="col-sm-9" style="padding-bottom:5px;">
+                <input asp-for="Ano" disabled class="form-control" />
+            </div>
+        </div>
+    </div>
+</div>

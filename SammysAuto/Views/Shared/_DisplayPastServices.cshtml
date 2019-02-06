@@ -1,0 +1,62 @@
+﻿@model SammysAuto.ViewModel.CarAndServicesViewModel
+@using SammysAuto.Utility
+
+<div>
+    <table class="table table-condensed table-hover">
+        <tr>
+            <td>
+                @Html.DisplayNameFor(m => m.PastServicesObj.FirstOrDefault().Quilometragem)
+            </td>
+            <td>
+                @Html.DisplayNameFor(m => m.PastServicesObj.FirstOrDefault().Preco)
+            </td>
+            <td>
+                @Html.DisplayNameFor(m => m.PastServicesObj.FirstOrDefault().Detalhes)
+            </td>
+            <td>
+                @Html.DisplayNameFor(m => m.PastServicesObj.FirstOrDefault().DataServico)
+            </td>
+            <td>
+                @Html.DisplayNameFor(m => m.PastServicesObj.FirstOrDefault().ServiceType.Nome)
+            </td>
+        </tr>
+
+        @foreach (var item in Model.PastServicesObj)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(m => item.Quilometragem)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.Preco)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.Detalhes)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.DataServico)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.ServiceType.Nome)
+            </td>
+            <td>
+                @if (item.DataServico.Date == DateTime.Now.Date && User.IsInRole(SD.AdminEndUser))
+                {
+                    @Html.Partial("_IndividualButtonPartial",
+                                    new IndividualButtonPartial
+                                    {
+                                        Action="Delete",
+                                        ButtonType="btn-danger",
+                                        Glyph="trash",
+                                        Text="Delete Button",
+                                        ServiceId=item.Id
+
+                                    })
+
+                }
+            </td>
+        </tr>
+        }
+    </table>
+</div>
+
